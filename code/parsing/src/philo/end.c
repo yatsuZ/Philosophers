@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   import.h                                           :+:      :+:    :+:   */
+/*   end.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 15:20:36 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/22 23:48:19 by yatsu            ###   ########.fr       */
+/*   Created: 2023/10/22 23:36:24 by yatsu             #+#    #+#             */
+/*   Updated: 2023/10/22 23:43:46 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMPORT_H
-# define IMPORT_H
+#include "./../../header/philo.h"
 
-# include "./constante.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <pthread.h>
-# include <unistd.h>
-# include <sys/time.h>
-
-#endif
+int	end(t_data *data, int error)
+{
+	if (error == 1)
+		printf("ERROR de malloc.\n");
+	return (free_data(data), error);
+}
