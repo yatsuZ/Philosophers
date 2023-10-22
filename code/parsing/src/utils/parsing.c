@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 18:47:40 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/22 19:36:08 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/22 19:45:07 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int	parsing(int argc, char **argv, int get_arg, int *error)
 	res = 0;
 	get_arg = get_arg + 1;
 	if (argc < 5 || argc > 6)
-		return (*error = 1, printf("ERROR: NOMBRE d'argument non valide.\n"), 0);
+		return (*error = 1, printf("\nERROR: NOMBRE d'argument non valide\n"), 0);
 	if (get_arg == 5 && argc == 5)
 		return (-1);
 	res = ft_atoi(argv[get_arg], error);
 	if (*error == 1)
-		printf("ERROR: Argument %d NULL ou ne contient rien.\n", get_arg);
+		printf("\nERROR: Argument %d NULL ou ne contient rien.\n", get_arg);
 	else if (*error == 2)
-		printf("ERROR: Argument %d NON valide.\n\
-		Caractere non valide | OU | OVERFLOW pour un INT.\n", get_arg);
+		printf("\nERROR: Argument %d NON valide.\n\
+Caractere non valide | OU | OVERFLOW pour un INT.\n\n", get_arg);
 	return (res);
 }

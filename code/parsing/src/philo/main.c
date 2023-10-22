@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:19:57 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/22 19:35:18 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/22 19:43:38 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	int	error = 0;
+	int	error;
 
+	error = 0;
 	printf("Il faut savoir que le temp est en MILLISECONDE\n\n");
 	printf("Nombre de philo\t= %d\n", parsing(argc, argv, 0, &error));
 	printf("Temp de vie\t\t= %d\n", parsing(argc, argv, 1, &error));
