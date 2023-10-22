@@ -16,7 +16,7 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 
 |       TÂCHES       |  ÉTAT      |
 | ----------------------------- | ------------ |
-|	Faire "HELLO WORLD" 						| X |
+|	Faire "HELLO WORLD" 						| ✅ |
 |	Remplir le tableau des tâches à accomplir	| X |
 
 BONUS : faire une visualisation avec MINILIBX.
