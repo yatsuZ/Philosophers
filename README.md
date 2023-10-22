@@ -19,6 +19,7 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 |	Faire "HELLO WORLD" 		| ✅ |
 |	Parsing = prendre les paramtres valide 	| ✅ |
 |	Cree un struct qui contiendra les donée du parsing	| ✅ |
+|	Utilise le temp faire que chaque seconde affiche quelque chose	| X |
 |	Comprendre + maitrisé la notion de mutex et de thread	| X |
 |	Remplir le tableau des tâches à accomplir	| X |
 
