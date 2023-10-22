@@ -17,6 +17,7 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 |       TÂCHES       |  ÉTAT      |
 | ----------------------------- | ------------ |
 |	Faire "HELLO WORLD" 						| ✅ |
+|	Parsing = prendre les paramtres valide 						| ✅ |
 |	Remplir le tableau des tâches à accomplir	| X |
 
 BONUS : faire une visualisation avec MINILIBX.
