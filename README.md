@@ -16,8 +16,10 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 
 |       TÂCHES       |  ÉTAT      |
 | ----------------------------- | ------------ |
-|	Faire "HELLO WORLD" 						| ✅ |
-|	Parsing = prendre les paramtres valide 						| ✅ |
+|	Faire "HELLO WORLD" 		| ✅ |
+|	Parsing = prendre les paramtres valide 	| ✅ |
+|	Cree un struct qui contiendra les donée du parsing	| ✅ |
+|	Comprendre + maitrisé la notion de mutex et de thread	| X |
 |	Remplir le tableau des tâches à accomplir	| X |
 
 BONUS : faire une visualisation avec MINILIBX.
