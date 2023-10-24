@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:19:57 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/24 23:33:57 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/25 00:06:01 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,39 @@ long	get_time_pass(struct timeval start, int *error)
 	struct timeval	now;
 	long			pass;
 
+	if (*error)
+		return (0);
 	if (gettimeofday(&(now), NULL) == -1)
 		return (*error = 3, 0);
 	pass = now.tv_sec * 1000 + now.tv_usec / 1000;
 	pass = pass - (start.tv_sec * 1000 + start.tv_usec / 1000);
 	return (pass);
+}
+
+long	ft_sleep(t_data *data, long t_sleep, long check_point)
+{
+	long	pass_s_fix;
+	long	duration;
+	long	last_dif;
+
+	pass_s_fix = get_time_pass(data->t_start, &(data->err));
+	duration = get_time_pass(data->t_start, &(data->err)) - pass_s_fix;
+	if (data->err)
+		return (0);
+	last_dif = duration;
+	while (t_sleep > duration)
+	{
+		if (duration - last_dif > check_point)
+		{
+			printf("%ld\t\tmicroseconde\n", duration);
+			last_dif = duration;
+		}
+		usleep(50);
+		duration = get_time_pass(data->t_start, &(data->err)) - pass_s_fix;
+		if (data->err)
+			return (0);
+	}
+	return (duration);
 }
 
 int	main(int argc, char **argv)
@@ -54,8 +82,9 @@ int	main(int argc, char **argv)
 	data = init_data(argc, argv, &error);
 	if (error || !data->n_eat)
 		return (end(data, error));
-	show_data(data);
-	passe_milis = get_time_pass(data->t_start, &(data->err));
+	// show_data(data);
+	printf("START\n\n");
+	passe_milis = ft_sleep(data, data->t_die, data->t_eat);
 	printf("\n%ld milliseconde on ecoulé\n", passe_milis);
 	return (end(data, data->err));
 }
