@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:19:57 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/25 00:06:01 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/25 00:17:57 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,11 @@ long	ft_sleep(t_data *data, long t_sleep, long check_point)
 	{
 		if (duration - last_dif > check_point)
 		{
-			printf("%ld\t\tmicroseconde\n", duration);
+			printf("%ld\tseconde\n", duration / 1000);
+			// divise par 1000 pour avoir des seconde
 			last_dif = duration;
 		}
-		usleep(50);
+		// usleep(50); Inutile pour linstant
 		duration = get_time_pass(data->t_start, &(data->err)) - pass_s_fix;
 		if (data->err)
 			return (0);
@@ -85,6 +86,7 @@ int	main(int argc, char **argv)
 	// show_data(data);
 	printf("START\n\n");
 	passe_milis = ft_sleep(data, data->t_die, data->t_eat);
-	printf("\n%ld milliseconde on ecoulé\n", passe_milis);
+	printf("\n%ld seconde on ecoulé\n", passe_milis / 1000);
+	// divise par 1000 pour avoir des seconde
 	return (end(data, data->err));
 }

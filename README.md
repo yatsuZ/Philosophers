@@ -19,9 +19,15 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 |	Faire "HELLO WORLD" 		| ✅ |
 |	Parsing = prendre les paramtres valide 	| ✅ |
 |	Cree un struct qui contiendra les donée du parsing	| ✅ |
-|	Utilise le temp faire que chaque seconde affiche quelque chose	| X |
-|	Comprendre + maitrisé la notion de mutex et de thread	| X |
-|	Remplir le tableau des tâches à accomplir	| X |
+|	Utilise le temp faire que chaque 5 seconde affiche quelque chose	| ✅ |
+|	Faire 2 thread philosophe qui ecrive quelque chose	| ✅ |
+|	Faire printf sans leak utilise  mutex	| ✅ |
+|	Comprendre + maitrisé la notion de mutex et de thread	| ✅ |
+|	Netoyer mon rangement de code.	| X |
+|	Faire un philosphe qui attend sa mort	| X |
+|	Faire 2 philosphe faire qu'il puisse manger dormir	| X |
+|	Tester avec plusieur philosophe	| X |
+|	A chauqe etape verifier les bug data race leak verifier que les philo meurt	| X |
 
 BONUS : faire une visualisation avec MINILIBX.
 

@@ -6,11 +6,30 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 23:16:55 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/28 15:28:23 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/28 21:55:48 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../../header/philo.h"
+
+void	init_mutex(t_data *data)
+{
+	if (!data)
+		return ;
+	data->use_printf = ft_calloc(1, sizeof(pthread_mutex_t), &(data->err));
+	if (data->err)
+		return ;
+	if (pthread_mutex_init(data->use_printf, NULL))
+		data->err = 6;
+}
+
+void	destroy_mutex(t_data *data)
+{
+	if (!data)
+		return ;
+	pthread_mutex_destroy(data->use_printf);
+	free(data->use_printf);
+}
 
 t_data	*init_data(int argc, char **argv)
 {
@@ -31,6 +50,7 @@ t_data	*init_data(int argc, char **argv)
 		return (data->err = 3, data);
 	data->threads = ft_calloc(data->n_philo, sizeof(pthread_t), &(data->err));
 	data->all_philo = ft_init_all_philo(data);
+	init_mutex(data);
 	return (data);
 }
 
@@ -38,6 +58,7 @@ void	free_data(t_data *data)
 {
 	if (!data)
 		return ;
+	destroy_mutex(data);
 	free_all_philo(data);
 	free(data->threads);
 	free(data);

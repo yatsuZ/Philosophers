@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 13:32:57 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/28 15:10:18 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/28 21:55:35 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ long	get_time_pass(struct timeval start, int *error)
 	return (pass);
 }
 
+// usleep(50); Inutile pour linstant
 long	ft_sleep(t_data *data, long t_sleep, long check_point)
 {
 	long	pass_s_fix;
@@ -47,10 +48,8 @@ long	ft_sleep(t_data *data, long t_sleep, long check_point)
 		if (duration - last_dif > check_point)
 		{
 			printf("%ld\tseconde\n", duration / 1000);
-			// divise par 1000 pour avoir des seconde
 			last_dif = duration;
 		}
-		// usleep(50); Inutile pour linstant
 		duration = get_time_pass(data->t_start, &(data->err)) - pass_s_fix;
 		if (data->err)
 			return (0);

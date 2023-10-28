@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:19:57 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/28 15:59:48 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/28 21:57:20 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,37 @@ void	show_data(t_data *data)
 	else
 		printf("Nombre de repas = %d\n", data->n_eat);
 }
+/*
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+	int		i;
+	i = -1;
+	data = init_data(argc, argv);
+	if (!data || data->err)
+		return (end(data, 1));
+
+	data->nbr_thread_actif = 0;
+	//Création des threads
+	while (++i < data->n_philo)
+	{
+		if (pthread_create(&(data->threads[i]), \
+		NULL, thread_philo, data->all_philo[i]))
+			return(end(data, 4));
+//return une erreur si pb a la creation
+	}
+	//attendre la fin des threads
+	i = -1;
+	while (++i < data->n_philo)
+	{
+		if (pthread_join(data->threads[i], NULL) != 0)
+			return(end(data, 5));
+	}
+	//Fin d'execution des threads
+	printf("NBR de thread actif = %d\n", data->nbr_thread_actif);
+	return (end(data, data->err));
+}
+*/
 
 int	main(int argc, char **argv)
 {
@@ -36,23 +67,19 @@ int	main(int argc, char **argv)
 	data = init_data(argc, argv);
 	if (!data || data->err)
 		return (end(data, 1));
-
 	data->nbr_thread_actif = 0;
-	//Création des threads
 	while (++i < data->n_philo)
 	{
-		if (pthread_create(&(data->threads[i]), NULL, thread_philo, data->all_philo[i]))
-			return(end(data, 4)); // return une erreur si pb a la creation
+		if (pthread_create(&(data->threads[i]), \
+		NULL, thread_philo, data->all_philo[i]))
+			return (end(data, 4));
 	}
-	
-	//attendre la fin des threads
 	i = -1;
 	while (++i < data->n_philo)
 	{
 		if (pthread_join(data->threads[i], NULL) != 0)
-			return(end(data, 5));
+			return (end(data, 5));
 	}
-	//Fin d'execution des threads
 	printf("NBR de thread actif = %d\n", data->nbr_thread_actif);
 	return (end(data, data->err));
 }

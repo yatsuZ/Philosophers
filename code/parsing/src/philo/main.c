@@ -6,11 +6,13 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:19:57 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/22 23:57:12 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/24 21:53:57 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../header/philo.h"
+
+// Apprendre à utilisé le temp faire que toute les 5 seconde j'affiche un truc
 
 void	show_data(t_data *data)
 {
