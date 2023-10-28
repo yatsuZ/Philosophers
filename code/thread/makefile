@@ -6,7 +6,7 @@
 #    By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 15:19:54 by yatsu             #+#    #+#              #
-#    Updated: 2023/10/28 14:22:14 by yatsu            ###   ########.fr        #
+#    Updated: 2023/10/28 15:43:31 by yatsu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRC_PHILO_PATH =	./src/philo/
 
 SRC_PHILO_FILES =	main.c	\
 					end.c	\
-					time.c
+					time.c	\
+					thread.c
 
 SRC_PHILO = ${addprefix ${SRC_PHILO_PATH}, ${SRC_PHILO_FILES}}	\
 			${addprefix ${SRC_PHILO_STRUCT_PATH}, ${SRC_PHILO_STRUCT_FILES}}

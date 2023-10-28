@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:20:24 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/28 14:13:24 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/28 15:54:57 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ struct s_data
 	struct timeval	t_start;
 	pthread_t 		*threads;
 	t_philo			**all_philo;
+	int				nbr_thread_actif;
 	int				err;
 };
 

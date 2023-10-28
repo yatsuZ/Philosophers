@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 14:21:22 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/28 14:48:20 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/28 15:18:20 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_philo	*ft_init_philo(t_data *data, int id)
 	philosophe = ft_calloc(1, sizeof(t_philo), &(data->err));
 	if (data->err)
 		return (NULL);
+	philosophe->data = data;
 	philosophe->id = id;
 	if (id == 0)
 		philosophe->nom = "Socrate";
