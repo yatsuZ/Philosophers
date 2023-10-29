@@ -6,13 +6,13 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:04:37 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 18:51:28 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/29 19:29:36 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../header/philo.h"
 
-int		*init_data(t_data **data, int argc, char **argv)
+int		init_data(t_data **data, int argc, char **argv)
 {
 	t_data	*d;
 
@@ -22,11 +22,11 @@ int		*init_data(t_data **data, int argc, char **argv)
 	d = *(data);
 	d->err = 0;
 	init_parsing(d, argc, argv);
-	if (gettimeofday(&(d->t_start), NULL) == -1)
+	if (!d->err && gettimeofday(&(d->t_start), NULL) == -1)
 		d->err = 5;
 	init_thread(d);
 	init_mutex(d);
-	ft_init_all_philo(data);
+	ft_init_all_philo(d);
 	return (d->err);
 }
 

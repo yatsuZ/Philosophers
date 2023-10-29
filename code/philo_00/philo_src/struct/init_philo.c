@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:40:40 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 18:54:16 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/29 20:08:03 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,18 @@ t_philo	*ft_init_philo(t_data *data, int id)
 	return (philosophe);
 }
 
-t_philo	**ft_init_all_philo(t_data *data)
+void	ft_init_all_philo(t_data *data)
 {
-	t_philo	**tab;
 	int		i;
 
 	if (!data || data->err)
-		return (NULL);
+		return ;
 	i = -1;
-	tab = ft_calloc(data->n_philo, sizeof(t_philo));
-	if (!tab)
-		return (data->err = 1, NULL);
-	while (!data->err && ++i < data->n_philo)
-		tab[i] = ft_init_philo(data, i);
-	return (tab);
+	data->all_philo = ft_calloc(data->n_philo, sizeof(t_philo));
+	if (!data->all_philo)
+		data->err = 1;
+	while (data->all_philo && !data->err && ++i < data->n_philo)
+		data->all_philo[i] = ft_init_philo(data, i);
 }
 
 void	free_philo(t_philo *philosophe)

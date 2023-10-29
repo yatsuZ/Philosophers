@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:19:22 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 18:52:01 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/29 21:21:00 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	ft_atoi(char *s, int *error)
 			return (*error = 4, 0);
 		res = res * 10 + s[i++] - '0';
 	}
+	if (s[i] || res > INT_MAX)
+		return (*error = 4, 0);
 	return (res);
 }
 
@@ -38,11 +40,11 @@ int	parsing(int argc, char **argv, int get_arg, int *error)
 	if (*error || (get_arg == 5 && argc == 5))
 		return (-1);
 	res = ft_atoi(argv[get_arg], error);
-	if (get_arg == 1 && !res)
+	if (get_arg == 1 && (!res || res > 1000))
 		*error = 4;
-
+	return (res);
 }
-void	init_parsing(t_data *data, int argc, int argv)
+void	init_parsing(t_data *data, int argc, char **argv)
 {
 	if (argc < 5 || argc > 6)
 		data->err = 2;
@@ -55,6 +57,8 @@ void	init_parsing(t_data *data, int argc, int argv)
 
 void	free_parsing(t_data *data)
 {
+	if (!data)
+		return ;
 	data->n_philo = 0;
 	data->t_die = 0;
 	data->t_eat = 0;

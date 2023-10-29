@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:58:30 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 19:02:10 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/29 19:30:44 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_thread(t_data *data)
 {
-	if (!data)
+	if (!data || data->err)
 		return ;
 	data->threads = ft_calloc(data->n_philo, sizeof(pthread_t));
 	if (!data->threads)

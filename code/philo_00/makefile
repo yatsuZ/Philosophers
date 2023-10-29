@@ -6,13 +6,13 @@
 #    By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 10:35:35 by yatsu             #+#    #+#              #
-#    Updated: 2023/10/29 18:48:51 by yatsu            ###   ########.fr        #
+#    Updated: 2023/10/29 19:18:19 by yatsu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ############### OBJ de PHILO
 
-PHILO_STRUCT_PATH =	./philo/struct/
+PHILO_STRUCT_PATH =	./philo_src/struct/
 
 PHILO_STRUCT_FILES =	init_data.c		\
 						init_mutex.c	\
@@ -20,16 +20,16 @@ PHILO_STRUCT_FILES =	init_data.c		\
 						init_thread.c	\
 						parsing.c
 
-PHILO_PATH =	./philo/
+PHILO_PATH =	./philo_src/
 
 PHILO_FILES =	main.c		\
 				ft_calloc.c	\
 				end.c
 
-PHILO_SRC =	${addprefix ${SRC_PHILO_PATH}, ${SRC_PHILO_FILES}}	\
+PHILO_SRC =	${addprefix ${PHILO_PATH}, ${PHILO_FILES}}	\
 			${addprefix ${PHILO_STRUCT_PATH}, ${PHILO_STRUCT_FILES}}
 
-OBJ_PHILO = ${SRC_PHILO:.c=.o} ${OBJ_UTILS}
+OBJ_PHILO = ${PHILO_SRC:.c=.o}
 
 ############### ligne de commande
 
