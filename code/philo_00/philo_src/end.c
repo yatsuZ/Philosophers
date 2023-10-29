@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:23:12 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 21:18:31 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/29 22:04:08 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	error_thread_and_mutex(int error)
 {
 	if (error == 6)
 		printf("Echec pour la generation des mutex.");
-	// if (error == ?)
-	// 	printf("Le Demarage des Threads ont echoue.");
-	// else if (data->err == ?)
-	// 	printf("La Fermeture des Threads ont echoue.");
+	if (error == 7)
+		printf("Le Demarage des Threads ont echoue.");
+	else if (error == 8)
+		printf("La Fermeture des Threads ont echoue.");
 }
 
 int	end(t_data *data)
@@ -44,7 +44,7 @@ int	end(t_data *data)
 		error_parsing(data->err);
 	else if (data->err == 5)
 		printf("ECHEC pour recuper la date d'aujhourdhui.");
-	else if (data->err >= 6 && data->err <= 6)
+	else if (data->err >= 6 && data->err <= 8)
 		error_thread_and_mutex(data->err);
 	return (printf("\n"), free_data(data), 0);
 }

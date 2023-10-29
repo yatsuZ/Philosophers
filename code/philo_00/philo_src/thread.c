@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 15:20:24 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 23:39:21 by yatsu            ###   ########.fr       */
+/*   Created: 2023/10/29 21:23:30 by yatsu             #+#    #+#             */
+/*   Updated: 2023/10/29 23:32:06 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "./../header/philo.h"
 
-# include "./import.h"
-
-typedef struct s_data	t_data;
-
-typedef struct s_philo
+void	*thread_philo(void *arg)
 {
+	t_philo	*philo;
 	t_data	*data;
-	int		id;
-}	t_philo;
 
-struct s_data
-{
-	int				n_philo;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
-	int				n_eat;
-	struct timeval	t_start;
-	pthread_t		*threads;
-	t_philo			**all_philo;
-	pthread_mutex_t	*use_printf;
-	int				nbr_thread_actif;
-	int				err;
-};
-
-#endif
+	philo = (t_philo *)arg;
+	data = philo->data;
+	pthread_mutex_lock(data->use_printf);
+	data->nbr_thread_actif++;
+	printf("first my id = %d\n", philo->id);
+	pthread_mutex_unlock(data->use_printf);
+	return (NULL);
+}

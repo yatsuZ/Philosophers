@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 10:36:23 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 19:14:59 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/29 23:28:46 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	main(int argc, char **argv)
 
 	if (init_data(&data, argc, argv))
 		return (end(data));
-	// if (activate_thread(data))
-	// 	return (end(data));
-	// finish_thread(data);
+	if (ON_or_OFF_all_thread(data, ON))
+		return (end(data));
+	// continue_all_thread(data);
+	ON_or_OFF_all_thread(data, OFF);
 	end(data);
 }
