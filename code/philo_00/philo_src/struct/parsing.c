@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:19:22 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 21:21:00 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/30 00:19:11 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	parsing(int argc, char **argv, int get_arg, int *error)
 		*error = 4;
 	return (res);
 }
+
 void	init_parsing(t_data *data, int argc, char **argv)
 {
 	if (argc < 5 || argc > 6)

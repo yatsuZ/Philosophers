@@ -6,13 +6,13 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:04:37 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 19:29:36 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/30 00:21:30 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../header/philo.h"
 
-int		init_data(t_data **data, int argc, char **argv)
+int	init_data(t_data **data, int argc, char **argv)
 {
 	t_data	*d;
 
