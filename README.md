@@ -23,7 +23,7 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 |	Faire 2 thread philosophe qui ecrive quelque chose	| ✅ |
 |	Faire printf sans leak utilise  mutex	| ✅ |
 |	Comprendre + maitrisé la notion de mutex et de thread	| ✅ |
-|	Netoyer mon rangement de code.	| X |
+|	Netoyer mon rangement de code.	| ✅ |
 |	Faire un philosphe qui attend sa mort	| X |
 |	Faire 2 philosphe faire qu'il puisse manger dormir	| X |
 |	Tester avec plusieur philosophe	| X |
