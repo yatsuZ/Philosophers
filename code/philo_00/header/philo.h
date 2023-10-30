@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:20:13 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/30 00:22:32 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/30 00:44:08 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ void	*ft_calloc(size_t nmemb, size_t size);
 
 // Pour les thread
 int		on_or_off_all_thread(t_data *data, int param);
-//FAIRE ces 4 fonction
+
 void	continue_all_thread(t_data *data);
-int		someone_is_dead(t_data *s_data);
-int		evryone_eat(t_data *s_data);
+//FAIRE cette fonction
 void	*thread_philo(void *arg);
 
 // Dernier foonction

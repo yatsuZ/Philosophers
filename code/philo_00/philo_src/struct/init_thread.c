@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:58:30 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/30 00:22:43 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/30 01:10:06 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,16 @@ int	on_or_off_all_thread(t_data *data, int param)
 
 void	continue_all_thread(t_data *d)
 {
-	while (1)
+	int	vrai;
+
+	vrai = TRUE;
+	while (vrai)
 	{
-		if (someone_is_dead(d))
-			return ;
-		else if (evryone_eat(d))
-			return ;
+		pthread_mutex_lock(d->use_printf);
+		if (d->evryone_is_alive == FALSE)
+			vrai = FALSE ;
+		else if (d->n_eat != -1 && !d->n_eat)
+			vrai = FALSE ;
+		pthread_mutex_unlock(d->use_printf);
 	}
 }

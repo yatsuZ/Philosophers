@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:04:37 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/30 00:21:30 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/30 00:37:29 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	init_data(t_data **data, int argc, char **argv)
 		return (1);
 	d = *(data);
 	d->err = 0;
+	d->evryone_is_alive = TRUE;
 	init_parsing(d, argc, argv);
 	if (!d->err && gettimeofday(&(d->t_start), NULL) == -1)
 		d->err = 5;

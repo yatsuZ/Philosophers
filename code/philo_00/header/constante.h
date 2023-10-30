@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:21:23 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 22:08:07 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/10/30 00:36:51 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 # define INT_MAX 2147483647
 # define ON 0
 # define OFF 1
+# define FALSE 0
+# define TRUE 1
 
 #endif
