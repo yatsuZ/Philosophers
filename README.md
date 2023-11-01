@@ -24,8 +24,8 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 |	Faire printf sans leak utilise  mutex	| ✅ |
 |	Comprendre + maitrisé la notion de mutex et de thread	| ✅ |
 |	Netoyer mon rangement de code.	| ✅ |
-|	Faire un philosphe qui attend sa mort	| X |
-|	Faire 2 philosphe faire qu'il puisse manger dormir	| X |
+|	Faire un philosphe qui attend sa mort	| ✅ |
+|	Faire 2 philosphe faire qu'il puisse prendre des fourhette manger dormir penser	| X |
 |	Tester avec plusieur philosophe	| X |
 |	A chauqe etape verifier les bug data race leak verifier que les philo meurt	| X |
 
