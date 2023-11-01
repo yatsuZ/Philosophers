@@ -1,0 +1,10 @@
+==267811== Helgrind, a thread error detector
+==267811== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==267811== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==267811== Command: ./philo 2 1000 1000 10000
+==267811== 
+==267811== 
+==267811== Use --history-level=approx or =none to gain increased speed, at
+==267811== the cost of reduced accuracy of conflicting-access information
+==267811== For lists of detected and suppressed errors, rerun with: -s
+==267811== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 100 from 25)
