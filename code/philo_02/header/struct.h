@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:20:24 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/02 01:59:27 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 17:17:23 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ struct s_data
 	t_philo			**all_philo;
 	pthread_t		*threads;
 	t_all_mutex		mutexs;
-	int				philo_eat;
 	int				evryone_is_alive;
+	long			time_of_death;
 	int				err;
 };
 

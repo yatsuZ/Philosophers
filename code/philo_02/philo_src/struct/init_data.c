@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 11:04:37 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/02 01:13:08 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 17:17:30 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	init_data(t_data **data, int argc, char **argv)
 	d = *(data);
 	d->err = 0;
 	d->evryone_is_alive = TRUE;
+	d->time_of_death = -1;
 	d->param = init_parsing(&(d->err), argc, argv);
-	d->philo_eat = d->param.n_eat;
 	d->mutexs = init_mutex(&(d->err), d->param.n_philo);
 	init_thread(d);
 	ft_init_all_philo(d);

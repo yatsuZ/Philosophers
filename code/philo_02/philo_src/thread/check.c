@@ -6,60 +6,74 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 01:03:41 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/02 03:37:52 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 18:41:27 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../header/philo.h"
 
-int	is_dead(t_data *d, t_parametre p, t_all_mutex m)
+int	la_morgue(t_philo *philo, t_parametre p, t_all_mutex m, long duration)
+{
+	t_data	*d;
+
+	d = philo->data;
+	pthread_mutex_lock(m.eat);
+	if (p.n_eat != -1 && p.n_eat <= philo->nbr_eat)
+		return (pthread_mutex_unlock(m.eat), 0);
+	if (duration - philo->t_last_eat >= p.t_die)
+	{
+		pthread_mutex_unlock(m.eat);
+		duration = get_time_pass(d->t_start, &(d->err));
+		pthread_mutex_lock(m.check);
+		d->evryone_is_alive = FALSE;
+		pthread_mutex_lock(m.use_printf);
+		d->time_of_death = duration;
+		printf("%ld %d \tdied\n", duration, philo->id);
+		pthread_mutex_unlock(m.use_printf);
+		return (pthread_mutex_unlock(m.check), 1);
+	}
+	return (pthread_mutex_unlock(m.eat), 0);
+}
+
+int	evryone_eat(t_data *d, t_parametre p, t_all_mutex m)
 {
 	int		i;
 	t_philo	*philo;
-	long	duration;
 
 	i = 0;
 	while (d->all_philo[i])
 	{
 		philo = d->all_philo[i++];
-		duration = get_time_pass(d->t_start, &(d->err));
-		if (d->err)
-			return (1);
 		pthread_mutex_lock(m.eat);
-		if (duration - philo->t_last_eat >= p.t_die)
-		{
-			pthread_mutex_unlock(m.eat);
-			duration = get_time_pass(d->t_start, &(d->err));
-			ft_message(duration, philo->id, "died", m);
-			pthread_mutex_lock(m.check);
-			d->evryone_is_alive = FALSE;
-			pthread_mutex_unlock(m.check);
-			return (1);
-		}
+		if (p.n_eat == -1 || p.n_eat > philo->nbr_eat)
+			return (pthread_mutex_unlock(m.eat), 0);
 		pthread_mutex_unlock(m.eat);
 	}
-	return (0);
+	return (1);
 }
 
 void	cheack_all_thread(t_data *d, t_parametre p, t_all_mutex m)
 {
 	int	vrai;
+	int	i;
+	t_philo	*philo;
+	long	duration;
 
 	vrai = TRUE;
 	while (vrai)
 	{
-		if (is_dead(d, p, m))
-			vrai = FALSE ;
-		pthread_mutex_lock(m.eat);
-		if (p.n_eat != -1 && vrai)
+		i = 0;
+		while (vrai && d->all_philo[i])
 		{
-			if (!d->philo_eat)
-			{
-				d->evryone_is_alive = 1;
-				vrai = FALSE ;
-			}
+			philo = d->all_philo[i++];
+			duration = get_time_pass(d->t_start, &(d->err));
+			if (d->err)
+				vrai = FALSE;
+			if (la_morgue(philo, p, m, duration))
+				vrai = FALSE;
 		}
-		pthread_mutex_unlock(m.eat);
+		if (evryone_eat(d, p, m))
+			vrai = FALSE ;
 		if (d->err)
 			vrai = FALSE ;
 	}

@@ -6,7 +6,7 @@
 #    By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 10:35:35 by yatsu             #+#    #+#              #
-#    Updated: 2023/11/02 03:29:11 by yatsu            ###   ########.fr        #
+#    Updated: 2023/11/03 18:44:38 by yatsu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ PHILO_THREAD_PATH =	./philo_src/thread/
 PHILO_THREAD_FILES =	check.c		\
 						routine.c	\
 						take_fork.c	\
-						eat.c
+						eat.c		\
+						sleep.c
 
 PHILO_STRUCT_PATH =	./philo_src/struct/
 

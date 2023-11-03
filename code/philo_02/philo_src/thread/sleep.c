@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat.c                                              :+:      :+:    :+:   */
+/*   sleep.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 02:51:49 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/03 20:32:33 by yatsu            ###   ########.fr       */
+/*   Created: 2023/11/03 18:43:59 by yatsu             #+#    #+#             */
+/*   Updated: 2023/11/03 20:31:54 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../header/philo.h"
 
-int	ft_eat(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m)
+int	philo_sleep(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m)
 {
 	if (!is_finish(d, m, philo))
-		return (give_fork(philo, p, m), 1);
-	ft_message(get_time_pass(d->t_start, &(d->err)), philo, "is eating", m);
-	pthread_mutex_lock(m.eat);
-	philo->nbr_eat++;
-	philo->t_last_eat = get_time_pass(d->t_start, &(d->err));
-	pthread_mutex_unlock(m.eat);
+		return (1);
+	ft_message(get_time_pass(d->t_start, &(d->err)), philo, "sleep", m);
 	ft_sleep(d, m, p.t_eat);
-	give_fork(philo, p, m);
+	return (0);
+}
+
+int	philo_think(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m)
+{
+	if (!is_finish(d, m, philo))
+		return (1);
+	ft_message(get_time_pass(d->t_start, &(d->err)), philo, "think", m);
+	get_first_fork(philo, p, m);
+	give_first_fork(philo, p, m);
 	return (0);
 }

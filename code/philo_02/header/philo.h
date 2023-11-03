@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:20:13 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/02 03:28:55 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 20:31:41 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,18 @@ void		free_mutex(t_all_mutex mutexs);
 
 // Fonction utile
 void		*ft_calloc(size_t nmemb, size_t size);
-void		ft_message(long time, int id, char *message, t_all_mutex mutexs);
+void		ft_message(long time, t_philo *philo, char *message, t_all_mutex mutexs);
 
 // Pour les thread
 void		thread_start(t_data *data);
-void		ft_take_fork(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m);
+int			is_finish(t_data *d, t_all_mutex m, t_philo *philo);
+int			ft_take_fork(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m);
 void		give_fork(t_philo *philo, t_parametre p, t_all_mutex m);
-void		ft_eat(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m);
+void		give_first_fork(t_philo *philo, t_parametre p, t_all_mutex m);
+void		get_first_fork(t_philo *philo, t_parametre p, t_all_mutex m);
+int			ft_eat(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m);
+int			philo_think(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m);
+int			philo_sleep(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m);
 
 //FAIRE cette fonction
 void		*routine(void *arg);

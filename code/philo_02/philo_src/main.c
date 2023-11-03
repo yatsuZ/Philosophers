@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 10:36:23 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/02 01:54:10 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 16:37:04 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,5 @@ int	main(int argc, char **argv)
 	thread_start(data);
 	end(data);
 }
+
+//POurquoi quand je mets un nombre de fois de mange il beug
