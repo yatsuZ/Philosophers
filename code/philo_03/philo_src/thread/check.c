@@ -1,0 +1,105 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/02 01:03:41 by yatsu             #+#    #+#             */
+/*   Updated: 2023/11/03 22:14:07 by yatsu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "./../../header/philo.h"
+
+int	la_morgue(t_philo *philo, t_parametre p, t_all_mutex m, long duration)
+{
+	t_data	*d;
+	long	now;
+
+	d = philo->data;
+	pthread_mutex_lock(m.eat);
+	if (p.n_eat != -1 && p.n_eat <= philo->nbr_eat)
+		return (pthread_mutex_unlock(m.eat), 0);
+	now = get_time_pass(d->t_start, &(d->err));
+	if (duration - philo->t_last_eat - (now - duration) >= (long)p.t_die)
+	{
+		pthread_mutex_unlock(m.eat);
+		// duration = get_time_pass(d->t_start, &(d->err));
+		pthread_mutex_lock(m.check);
+		d->evryone_is_alive = FALSE;
+		pthread_mutex_lock(m.use_printf);
+		d->time_of_death = duration;
+		printf("%ld - %ld - (%ld - %ld) >= %d\n", duration, philo->t_last_eat, now, duration, p.t_die);
+		printf("%ld %d \tdied\n", duration, philo->id);
+		pthread_mutex_unlock(m.use_printf);
+		return (pthread_mutex_unlock(m.check), 1);
+	}
+	return (pthread_mutex_unlock(m.eat), 0);
+}
+
+int	evryone_eat(t_data *d, t_parametre p, t_all_mutex m)
+{
+	int		i;
+	t_philo	*philo;
+
+	i = 0;
+	while (d->all_philo[i])
+	{
+		philo = d->all_philo[i++];
+		pthread_mutex_lock(m.eat);
+		if (p.n_eat == -1 || p.n_eat > philo->nbr_eat)
+			return (pthread_mutex_unlock(m.eat), 0);
+		pthread_mutex_unlock(m.eat);
+	}
+	pthread_mutex_lock(m.check);
+	d->evryone_is_alive = FALSE;
+	pthread_mutex_unlock(m.check);
+	return (1);
+}
+
+void	cheack_all_thread(t_data *d, t_parametre p, t_all_mutex m)
+{
+	int	vrai;
+	int	i;
+	t_philo	*philo;
+	long	duration;
+
+	vrai = TRUE;
+	while (vrai)
+	{
+		i = 0;
+		while (vrai && d->all_philo[i])
+		{
+			philo = d->all_philo[i++];
+			duration = get_time_pass(d->t_start, &(d->err));
+			if (d->err)
+				vrai = FALSE;
+			if (la_morgue(philo, p, m, duration))
+				vrai = FALSE;
+		}
+		if (evryone_eat(d, p, m))
+			vrai = FALSE ;
+		if (d->err)
+			vrai = FALSE ;
+	}
+}
+
+void	thread_start(t_data *d)
+{
+	int	i;
+
+	i = -1;
+	while (++i < d->param.n_philo)
+	{
+		if (pthread_create(&(d->threads[i]), NULL, routine, d->all_philo[i]))
+			d->err = 7;
+	}
+	cheack_all_thread(d, d->param, d->mutexs);
+	i = -1;
+	while (++i < d->param.n_philo)
+	{
+		if (pthread_join(d->threads[i], NULL) != 0)
+			d->err = 8;
+	}
+}
