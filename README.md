@@ -25,11 +25,12 @@ L'image ci-dessus représente le célèbre problème du [« dîner des philosoph
 |	Comprendre + maitrisé la notion de mutex et de thread	| ✅ |
 |	Netoyer mon rangement de code.	| ✅ |
 |	Faire un philosphe qui attend sa mort	| ✅ |
-|	Faire 2 philosphe faire qu'il puisse prendre des fourhette manger dormir penser	| X |
-|	Tester avec plusieur philosophe	| X |
-|	A chauqe etape verifier les bug data race leak verifier que les philo meurt	| X |
+|	Faire 2 philosphe faire qu'il puisse prendre des fourhette manger dormir penser	| ✅ |
+|	Tester avec plusieur philosophe	| ✅ |
+|	A chaque etape verifier les bug data race leak verifier que les philo meurt	| ✅ |
+|	Reussir la corection	| X |
 
-BONUS : faire une visualisation avec MINILIBX.
+BONUS PERSONELLE : faire une visualisation avec MINILIBX.
 
 ## Exigences
 

@@ -1,0 +1,27 @@
+0 1 has taken a fork
+0 1 has taken a fork
+0 1 is eating
+0 2 has taken a fork
+199 1 is sleeping
+199 2 has taken a fork
+199 2 is eating
+399 1 is thinking
+399 1 has taken a fork
+399 2 is sleeping
+399 1 has taken a fork
+399 1 is eating
+598 2 is thinking
+598 2 has taken a fork
+598 1 is sleeping
+598 2 has taken a fork
+598 2 is eating
+797 1 is thinking
+797 1 has taken a fork
+797 2 is sleeping
+797 1 has taken a fork
+797 1 is eating
+996 2 is thinking
+996 2 has taken a fork
+996 1 is sleeping
+996 2 has taken a fork
+996 2 is eating
