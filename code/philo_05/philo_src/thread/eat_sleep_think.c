@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:09:48 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/04 23:10:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/05 00:35:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_eat(t_philo *philo, t_data *data)
 int	philo_sleep(t_philo *philo, t_data *data)
 {
 	ft_message(philo, "is sleeping", data->mutexs);
-	ft_sleep(data->param.t_eat);
+	ft_sleep(data->param.t_sleep);
 	return (0);
 }
 
