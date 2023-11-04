@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:43:04 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/04 16:51:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/04 19:29:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_message(t_data *d, t_philo *philo, char *message, t_all_mutex mutexs)
 		pthread_mutex_unlock(mutexs.check);
 		pthread_mutex_lock(mutexs.use_printf);
 		if (d->one_dead == FALSE)
-			printf("%ld %d \t%s\t\t%d %d\n", time, philo->id, message, philo->first_fork, philo->second_fork);
+			printf("%ld %d %s\n", time, philo->id + 1, message);
 		pthread_mutex_unlock(mutexs.use_printf);
 		return ;
 	}

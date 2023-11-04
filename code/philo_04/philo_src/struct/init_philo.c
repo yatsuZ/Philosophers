@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:40:40 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/04 16:58:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/04 20:47:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ int	get_second_fork(int id, t_parametre p)
 {
 	int	index_fork;
 
-	// if (id % 2 == 0)
-	// 	index_fork = id + 1;
-	// else
-	// 	index_fork = id;
-	index_fork = id + 1;
+	if (id % 2 == 0)
+		index_fork = id + 1;
+	else
+		index_fork = id;
 	if (index_fork == p.n_philo)
 		index_fork = 0;
 	return (index_fork);
@@ -30,11 +29,10 @@ int	get_first_fork(int id, t_parametre p)
 {
 	int	index_fork;
 
-	// if (id % 2 == 0)
-	// 	index_fork = id;
-	// else
-	// 	index_fork = id + 1;
-	index_fork = id;
+	if (id % 2 == 0)
+		index_fork = id;
+	else
+		index_fork = id + 1;
 	if (index_fork == p.n_philo)
 		index_fork = 0;
 	return (index_fork);
@@ -51,7 +49,6 @@ t_philo	*ft_init_philo(t_data *data, int id)
 		return (data->err = 1, NULL);
 	philosophe->first_fork = get_first_fork(id, data->param);
 	philosophe->second_fork = get_second_fork(id, data->param);
-	printf("ID du philo = %d | FIRST fork = %d | second fork = %d\n", id, philosophe->first_fork, philosophe->second_fork);
 	philosophe->t_last_eat = 0;
 	philosophe->data = data;
 	philosophe->nbr_eat = 0;

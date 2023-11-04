@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 01:03:41 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/04 16:36:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/04 20:40:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	la_morgue(t_philo *philo, t_parametre p, t_all_mutex m, long duration)
 		d->evryone_is_alive = FALSE;
 		pthread_mutex_lock(m.use_printf);
 		d->one_dead = TRUE;
-		printf("%ld %d \tdied\n", duration, philo->id);
+		printf("%ld %d died\n", duration, philo->id + 1);
 		pthread_mutex_unlock(m.use_printf);
 		return (pthread_mutex_unlock(m.check), 1);
 	}
@@ -54,31 +54,31 @@ int	evryone_eat(t_data *d, t_parametre p, t_all_mutex m)
 	return (1);
 }
 
-void	cheack_all_thread(t_data *d, t_parametre p, t_all_mutex m)
+void	check_all_thread(t_data *d, t_parametre p, t_all_mutex m)
 {
-	int		vrai;
+	int		finish;
 	int		i;
 	t_philo	*philo;
 	long	duration;
 
-	vrai = TRUE;
-	while (vrai)
+	finish = FALSE;
+	while (!finish)
 	{
 		i = 0;
-		while (vrai && d->all_philo[i])
+		while (!finish && d->all_philo[i])
 		{
 			philo = d->all_philo[i++];
 			duration = get_time_pass(d->t_start, &(d->err));
 			if (d->err)
-				vrai = FALSE;
+				finish = TRUE;
 			if (la_morgue(philo, p, m, duration))
-				vrai = FALSE;
+				finish = TRUE;
 		}
 		if (evryone_eat(d, p, m))
-			vrai = FALSE ;
+			finish = TRUE ;
 		pthread_mutex_lock(m.check);
 		if (d->err)
-			vrai = FALSE ;
+			finish = TRUE;
 		pthread_mutex_unlock(m.check);
 	}
 }
@@ -93,7 +93,7 @@ void	thread_start(t_data *d)
 		if (pthread_create(&(d->threads[i]), NULL, routine, d->all_philo[i]))
 			d->err = 7;
 	}
-	cheack_all_thread(d, d->param, d->mutexs);
+	check_all_thread(d, d->param, d->mutexs);
 	i = -1;
 	while (++i < d->param.n_philo)
 	{
