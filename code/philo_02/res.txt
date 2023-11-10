@@ -1,29 +1,30 @@
-0 0 	has taken a fork 1
-0 0 	has taken a fork 2
-0 0 	is eating
-0 1 	has taken a fork 1
-0 3 	has taken a fork 1
-0 3 	has taken a fork 2
-0 3 	is eating
-200 3 	GIVE FORK
-200 3 	sleping
-200 4 	has taken a fork 1
-200 0 	GIVE FORK
-200 0 	sleping
-200 4 	has taken a fork 2
-200 4 	is eating
-200 1 	has taken a fork 2
-200 1 	is eating
-400 1 	GIVE FORK
-400 1 	sleping
-400 3 	thinking
-400 0 	thinking
-400 2 	has taken a fork 1
-400 2 	has taken a fork 2
-400 2 	is eating
-400 4 	GIVE FORK
-400 4 	sleping
-410 0 	died
+0		0	has taken a fork 1 (faudra retirer le 1 et 2)
+0		0	has taken a fork 2
+0		0	is eating
+0		3	has taken a fork 1 (faudra retirer le 1 et 2)
+0		3	has taken a fork 2
+0		3	is eating
+0		1	has taken a fork 1 (faudra retirer le 1 et 2)
+200		0	sleep
+200		3	sleep
+200		4	has taken a fork 1 (faudra retirer le 1 et 2)
+200		4	has taken a fork 2
+200		4	is eating
+200		1	has taken a fork 2
+200		1	is eating
+400		1	sleep
+400		3	think
+400		0	think
+400		2	has taken a fork 1 (faudra retirer le 1 et 2)
+400		2	has taken a fork 2
+400		2	is eating
+400		4	sleep
+400		3	has taken a fork 1 (faudra retirer le 1 et 2)
+400		0	has taken a fork 1 (faudra retirer le 1 et 2)
+400		0	has taken a fork 2
+400		0	is eating
+410 3 	died
+410		3	has taken a fork 2
 
 
 SUCCES.

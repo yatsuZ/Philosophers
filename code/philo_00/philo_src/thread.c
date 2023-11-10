@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:23:30 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/01 16:35:52 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/01 18:47:41 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,6 @@ int	is_finish(t_philo *philo)
 	return (pthread_mutex_unlock(data->write_data), res);
 }
 
-void	is_dead(t_philo *philo, long duration)
-{
-	t_data	*d;
-
-	d = philo->data;
-	if (duration >= d->t_die)
-	{
-		pthread_mutex_lock(d->write_data);
-		d->evryone_is_alive = FALSE;
-		pthread_mutex_unlock(d->write_data);
-		ft_message(get_time_pass(philo->data->t_start, &(philo->data->err)), philo->id, "died", philo->data);
-	}
-}
 
 void	*thread_philo(void *arg)
 {
@@ -52,7 +39,7 @@ void	*thread_philo(void *arg)
 	philo = (t_philo *)arg;
 	while (!is_finish(philo))// c'est fini si quelqun est mort ou si tout le mondde a mange x fois.
 	{
-		is_dead(philo, get_time_pass(philo->data->t_start, &(philo->data->err)));
+		usleep(100);
 		// ft_take_fork(philo);
 		// ft_eat(philo);
 		// ft_sleep(philo);
@@ -60,3 +47,6 @@ void	*thread_philo(void *arg)
 	}
 	return (NULL);
 }
+
+// 1. Faire que data est un tableau de mutex de fourchette init free etc
+// 2. Quand le thread commence faire que tout le monde doit prend une fouchette et verifier qu

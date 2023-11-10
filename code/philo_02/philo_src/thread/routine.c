@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 01:03:44 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/03 20:31:14 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 20:43:36 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	*routine(void *arg)
 		if (ft_take_fork(philo, d, p, m))
 			return (NULL);
 		if (ft_eat(philo, d, p, m))
-			return (NULL);
+			return (give_fork(philo, p, m), NULL);
+		give_fork(philo, p, m);
 		if (philo_sleep(philo, d, p, m))
 			return (NULL);
 		if (philo_think(philo, d, p, m))

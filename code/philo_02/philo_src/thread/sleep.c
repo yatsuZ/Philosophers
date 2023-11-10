@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:43:59 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/03 20:31:54 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 20:41:51 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	philo_sleep(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m)
 
 int	philo_think(t_philo *philo, t_data *d, t_parametre p, t_all_mutex m)
 {
+	(void)	p;
+	
 	if (!is_finish(d, m, philo))
 		return (1);
 	ft_message(get_time_pass(d->t_start, &(d->err)), philo, "think", m);
-	get_first_fork(philo, p, m);
-	give_first_fork(philo, p, m);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:20:24 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/04 15:59:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/10 12:44:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_parametre
 	int				t_eat;
 	int				t_sleep;
 	int				n_eat;
+	int				is_impaire;
 }	t_parametre;
 
 typedef struct s_all_mutex

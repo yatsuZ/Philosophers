@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:40:40 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/29 20:08:03 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/01 16:41:23 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_philo	*ft_init_philo(t_data *data, int id)
 	philosophe = ft_calloc(1, sizeof(t_philo));
 	if (!philosophe)
 		return (data->err = 1, NULL);
+	philosophe->t_last_eat = 0;
 	philosophe->data = data;
 	philosophe->id = id;
 	return (philosophe);

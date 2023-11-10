@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:09:48 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/05 00:35:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/10 12:45:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	philo_sleep(t_philo *philo, t_data *data)
 int	philo_think(t_philo *philo, t_data *data)
 {
 	ft_message(philo, "is thinking", data->mutexs);
-	if (data->param.n_philo % 2 == 1)
+	if (data->param.is_impaire)
 		ft_sleep(data->param.t_eat / 2);
 	return (0);
 }

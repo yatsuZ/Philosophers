@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:11:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/04 23:12:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/10 12:41:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	*routine(void *arg)
 	t_philo		*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->id % 2 == 1)
+		ft_sleep(philo->data->param.t_eat / 4);
 	while (1)
 	{
 		if (ft_take_fork(philo, philo->data))

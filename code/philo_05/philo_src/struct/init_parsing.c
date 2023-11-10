@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:01:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2023/11/04 23:28:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2023/11/10 12:45:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@ t_parametre	init_parsing(int *err, int argc, char **argv)
 	param.t_eat = parsing(argc, argv, 2, err);
 	param.t_sleep = parsing(argc, argv, 3, err);
 	param.n_eat = parsing(argc, argv, 4, err);
+	if (param.n_philo % 2)
+		param.is_impaire = TRUE;
+	else
+		param.is_impaire = FALSE;
 	return (param);
 }

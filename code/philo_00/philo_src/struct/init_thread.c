@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 18:58:30 by yatsu             #+#    #+#             */
-/*   Updated: 2023/10/30 01:10:06 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/01 18:42:32 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,31 @@ int	on_or_off_all_thread(t_data *data, int param)
 	return (0);
 }
 
+int	is_dead(t_data *d)
+{
+	int		i;
+	t_philo	*p;
+	long	duration;
+
+	i = 0;
+	while (d->all_philo[i])
+	{
+		p = d->all_philo[i++];
+		duration = get_time_pass(d->t_start, &(d->err));
+		if (d->err)
+			return (1);
+		if (duration - p->t_last_eat >= d->t_die)
+		{
+			ft_message(get_time_pass(p->data->t_start, &(p->data->err)), p->id, "died", d);
+			pthread_mutex_lock(d->write_data);
+			d->evryone_is_alive = FALSE;
+			pthread_mutex_unlock(d->write_data);
+			return (1);
+		}
+	}
+	return (0);
+}
+
 void	continue_all_thread(t_data *d)
 {
 	int	vrai;
@@ -54,11 +79,12 @@ void	continue_all_thread(t_data *d)
 	vrai = TRUE;
 	while (vrai)
 	{
-		pthread_mutex_lock(d->use_printf);
-		if (d->evryone_is_alive == FALSE)
+		if (is_dead(d))// Faire une boucle qui verifie pour chaque philo si ils ont pas deppase leur t_death
 			vrai = FALSE ;
 		else if (d->n_eat != -1 && !d->n_eat)
 			vrai = FALSE ;
-		pthread_mutex_unlock(d->use_printf);
+		else if (d->err)
+			vrai = FALSE ;
 	}
 }
+

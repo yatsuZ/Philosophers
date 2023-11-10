@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:23:30 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/01 23:35:02 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/03 21:07:09 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,15 @@ void	ft_eat(t_philo *philo, t_data *d)
 {
 	ft_message(get_time_pass(d->t_start, &(d->err)), philo->id, "is eating", d);
 	philo->nbr_eat++;
+
 	pthread_mutex_lock(d->eat);
 	if (philo->nbr_eat == d->n_eat)
 		d->evryone_eat++;
 	pthread_mutex_unlock(d->eat);
+	
 	philo->t_last_eat = get_time_pass(d->t_start, &(d->err));
 	ft_sleep(d, d->t_eat);
+	
 	pthread_mutex_unlock(d->all_fork[philo->id]);
 	if (d->n_philo != 1 && d->n_philo - 1 != philo->id)
 		pthread_mutex_unlock(d->all_fork[philo->id + 1]);

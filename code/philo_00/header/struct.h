@@ -6,7 +6,7 @@
 /*   By: yatsu <yatsu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 15:20:24 by yatsu             #+#    #+#             */
-/*   Updated: 2023/11/01 16:02:13 by yatsu            ###   ########.fr       */
+/*   Updated: 2023/11/01 16:40:56 by yatsu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_data	t_data;
 typedef struct s_philo
 {
 	t_data	*data;
-	struct timeval	t_last_eat;
+	long	t_last_eat;
 	int		id;
 }	t_philo;
 
